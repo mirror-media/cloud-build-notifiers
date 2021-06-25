@@ -24,7 +24,7 @@ func TestWriteMessage(t *testing.T) {
 
 	want := &slack.WebhookMessage{
 		Attachments: []slack.Attachment{{
-			Text:  "Cloud Build (my-project-id, some-build-id): SUCCESS",
+			Text:  "SUCCESS: my-project-name - some-build-id",
 			Color: "good",
 			Actions: []slack.AttachmentAction{{
 				Text: "View Logs",

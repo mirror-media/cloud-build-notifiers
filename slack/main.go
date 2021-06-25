@@ -80,7 +80,7 @@ func (s *slackNotifier) SendNotification(ctx context.Context, build *cbpb.Build)
 
 func (s *slackNotifier) writeMessage(build *cbpb.Build) (*slack.WebhookMessage, error) {
 	txt := fmt.Sprintf(
-		"%s %s: %s",
+		"%s: %s - %s",
 		build.Status,
 		build.Name,
 		build.Id,
