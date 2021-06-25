@@ -11,7 +11,7 @@ import (
 func TestWriteMessage(t *testing.T) {
 	n := new(slackNotifier)
 	b := &cbpb.Build{
-		ProjectId: "my-project-id",
+		Name: 	   "my-project-name",
 		Id:        "some-build-id",
 		Status:    cbpb.Build_SUCCESS,
 		LogUrl:    "https://some.example.com/log/url?foo=bar",
@@ -27,7 +27,7 @@ func TestWriteMessage(t *testing.T) {
 			Text:  "SUCCESS: my-project-name - some-build-id",
 			Color: "good",
 			Actions: []slack.AttachmentAction{{
-				Text: "View Logs",
+				Text: "Build Logs",
 				Type: "button",
 				URL:  "https://some.example.com/log/url?foo=bar&utm_campaign=google-cloud-build-notifiers&utm_medium=chat&utm_source=google-cloud-build",
 			}},
