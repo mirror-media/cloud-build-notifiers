@@ -1,0 +1,13 @@
+apiVersion: cloud-build-notifiers/v1
+kind: SlackNotifier
+metadata:
+  name: cloudbuild-slack-notifier
+spec:
+  notification:
+    filter: build.status == Build.Status.WORKING || build.status == Build.Status.SUCCESS || build.status == Build.Status.FAILURE || build.status == Build.Status.TIMEOUT || build.status == Build.Status.CANCELLED || build.status == Build.Status.EXPIRED
+    delivery:
+      webhookUrl:
+        secretRef: cloud-build-slack-notification
+  secrets:
+  - name: cloud-build-slack-notification
+    value: projects/439405143478/secrets/cloud-build-slack-notification/versions/latest

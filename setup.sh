@@ -28,7 +28,7 @@ the repo) are:
 
 Usage [in the cloud-build-notifiers repo root]:
 
-./setup.sh <notifier-type> <local-config-path> [secret-name]
+./setup.sh slack cloudbuild-notification.yaml cloud-build-slack-notification
 
 Concrete example:
 
@@ -90,7 +90,8 @@ main() {
   DESTINATION_BUCKET_NAME="${PROJECT_ID}-notifiers-config"
   DESTINATION_BUCKET_URI="gs://${DESTINATION_BUCKET_NAME}"
   DESTINATION_CONFIG_PATH="${DESTINATION_BUCKET_URI}/${SOURCE_CONFIG_BASENAME}"
-  IMAGE_PATH="us-east1-docker.pkg.dev/gcb-release/cloud-build-notifiers/${NOTIFIER_TYPE}:latest"
+  IMAGE_PATH="gcr.io/mirror-tv-275709/cloud-build-notifier:latest"
+  #IMAGE_PATH="us-east1-docker.pkg.dev/gcb-release/cloud-build-notifiers/${NOTIFIER_TYPE}:latest"
   SERVICE_NAME="${NOTIFIER_TYPE}-notifier"
   SUBSCRIPTION_NAME="${NOTIFIER_TYPE}-subscription"
   INVOKER_SA="cloud-run-pubsub-invoker@${PROJECT_ID}.iam.gserviceaccount.com"
