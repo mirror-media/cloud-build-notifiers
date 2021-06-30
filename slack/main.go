@@ -83,7 +83,7 @@ func (s *slackNotifier) writeMessage(build *cbpb.Build) (*slack.WebhookMessage, 
 	//TODO: update the message ref: https://cloud.google.com/build/docs/api/reference/rest/v1/projects.builds
 	txt := fmt.Sprintf(
 		"%s: %s - %s:%s",
-		strings.ToLower(build.Status),
+		build.Status,
 		build.ProjectId,
 		build.Images[0],
 		build.Tags[0],
