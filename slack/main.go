@@ -17,6 +17,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"strings"
 
 	"github.com/GoogleCloudPlatform/cloud-build-notifiers/lib/notifiers"
 	log "github.com/golang/glog"
@@ -81,11 +82,11 @@ func (s *slackNotifier) SendNotification(ctx context.Context, build *cbpb.Build)
 func (s *slackNotifier) writeMessage(build *cbpb.Build) (*slack.WebhookMessage, error) {
 	//TODO: update the message ref: https://cloud.google.com/build/docs/api/reference/rest/v1/projects.builds
 	txt := fmt.Sprintf(
-		"%s: %s - %s - %s",
-		build.Status,
+		"%s: %s - %s:%s",
+		strings.ToLower(build.Status),
 		build.ProjectId,
 		build.Images[0],
-		build.BuildTriggerId,
+		build.Tags[0],
 	)
 
 	var clr string
