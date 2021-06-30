@@ -83,9 +83,9 @@ func (s *slackNotifier) writeMessage(build *cbpb.Build) (*slack.WebhookMessage, 
 	txt := fmt.Sprintf(
 		"%s: %s - %s - %s",
 		build.Status,
-		build.projectId,
-		build.images[0],
-		build.buildTriggerId,
+		build.ProjectId,
+		build.Images[0],
+		build.BuildTriggerId,
 	)
 
 	var clr string
