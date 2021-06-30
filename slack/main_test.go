@@ -14,7 +14,7 @@ func TestWriteMessage(t *testing.T) {
 		Name: 	   "my-project-name",
 		ProjectId:        "project-id",
 		Status:    cbpb.Build_SUCCESS,
-        Images:    [...]string{"built-images"}
+        Images:    [...]string{"built-images"},
 		LogUrl:    "https://some.example.com/log/url?foo=bar",
         BuildTriggerId: "triger-Id",
 	}
