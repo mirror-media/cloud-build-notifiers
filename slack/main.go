@@ -81,10 +81,11 @@ func (s *slackNotifier) SendNotification(ctx context.Context, build *cbpb.Build)
 func (s *slackNotifier) writeMessage(build *cbpb.Build) (*slack.WebhookMessage, error) {
 	//TODO: update the message ref: https://cloud.google.com/build/docs/api/reference/rest/v1/projects.builds
 	txt := fmt.Sprintf(
-		"%s: %s - %s",
+		"%s: %s - %s - %s",
 		build.Status,
-		build.Name,
-		build.Id,
+		build.projectId,
+		build.images[0],
+		build.buildTriggerId,
 	)
 
 	var clr string

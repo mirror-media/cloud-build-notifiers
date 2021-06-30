@@ -12,9 +12,11 @@ func TestWriteMessage(t *testing.T) {
 	n := new(slackNotifier)
 	b := &cbpb.Build{
 		Name: 	   "my-project-name",
-		Id:        "some-build-id",
+		ProjectId:        "project-id",
 		Status:    cbpb.Build_SUCCESS,
+        Images:    [...]string{"built-images"}
 		LogUrl:    "https://some.example.com/log/url?foo=bar",
+        BuildTriggerId: "triger-Id",
 	}
 
 	got, err := n.writeMessage(b)
@@ -24,7 +26,7 @@ func TestWriteMessage(t *testing.T) {
 
 	want := &slack.WebhookMessage{
 		Attachments: []slack.Attachment{{
-			Text:  "SUCCESS: my-project-name - some-build-id",
+			Text:  "SUCCESS: project-id - built-images - triger-Id",
 			Color: "good",
 			Actions: []slack.AttachmentAction{{
 				Text: "Build Logs",
