@@ -20,6 +20,12 @@ steps:
     args:
       - push
       - 'gcr.io/$PROJECT_ID/cloud-build-notifier:latest'
+  - name: bash
+    args:
+      - './setup.sh'
+      - 'slack'
+      - 'cloudbuild-notification.yaml'
+      - 'cloud-build-slack-notification'
 images:
   - gcr.io/$PROJECT_ID/cloud-build-notifier
 
