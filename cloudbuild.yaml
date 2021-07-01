@@ -1,0 +1,33 @@
+steps:
+  - name: bash
+    args:
+      - ln
+      - '-s'
+      - ./slack/Dockerfile
+      - ./Dockerfile
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - build
+      - '-t'
+      - 'gcr.io/${PROJECT_ID}/cloud-build-notifier:${BRANCH_NAME}_${SHORT_SHA}'
+      - .
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - tag
+      - 'gcr.io/${PROJECT_ID}/cloud-build-notifier:${BRANCH_NAME}_${SHORT_SHA}'
+      - 'gcr.io/${PROJECT_ID}/cloud-build-notifier:latest'
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - push
+      - 'gcr.io/$PROJECT_ID/cloud-build-notifier:latest'
+ # Deploy container image to Cloud Run
+ # cloud-build-slack-notification
+ - name: bash
+   args:
+     - 'setup.sh'
+     - 'slack'
+     - 'cloudbuild-notification.yaml'
+     - 'cloud-build-slack-notification'
+images:
+  - gcr.io/$PROJECT_ID/cloud-build-notifier
+
