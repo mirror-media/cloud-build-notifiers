@@ -20,8 +20,6 @@ steps:
     args:
       - push
       - 'gcr.io/$PROJECT_ID/cloud-build-notifier:latest'
- # Deploy container image to Cloud Run
- # cloud-build-slack-notification
  - name: bash
    args:
      - './setup.sh'
