@@ -28,7 +28,7 @@ steps:
       - 'deploy'
       - 'slack-notifier'
       - '--image'
-      - 'gcr.io/${PROJECT_ID}/cloud-build-notifier:latest
+      - 'gcr.io/${PROJECT_ID}/cloud-build-notifier:latest'
       - '--region'
       - 'asia-east1'
       - '--platform'
