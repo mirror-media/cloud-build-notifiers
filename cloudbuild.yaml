@@ -24,7 +24,7 @@ steps:
  # cloud-build-slack-notification
  - name: bash
    args:
-     - 'setup.sh'
+     - './setup.sh'
      - 'slack'
      - 'cloudbuild-notification.yaml'
      - 'cloud-build-slack-notification'
