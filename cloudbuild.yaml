@@ -20,12 +20,20 @@ steps:
     args:
       - push
       - 'gcr.io/$PROJECT_ID/cloud-build-notifier:latest'
-  - name: bash
+  # setup.sh slack cloudbuild-notification.yaml cloud-build-slack-notification
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
     args:
-      - './setup.sh'
-      - 'slack'
-      - 'cloudbuild-notification.yaml'
-      - 'cloud-build-slack-notification'
+      - 'run'
+      - 'deploy'
+      - 'cloud-build-notifier'
+      - '--image'
+      - 'gcr.io/${PROJECT_ID}/cloud-build-notifier:${BRANCH_NAME}_${SHORT_SHA}'
+      - '--region'
+      - 'asia-east1'
+      - '--platform'
+      - 'managed'
+      - '--no-allow-unauthenticated'
 images:
   - gcr.io/$PROJECT_ID/cloud-build-notifier
 
