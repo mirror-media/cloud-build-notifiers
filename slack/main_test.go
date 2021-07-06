@@ -19,7 +19,7 @@ func TestWriteMessage(t *testing.T) {
 		LogUrl:    "https://some.example.com/log/url?foo=bar",
         BuildTriggerId: "triger-Id",
 		Source:		&cbpb.Build.Source{
-						RepoSource: i&cbpb.Build.Source.RepoSource {
+						RepoSource: &cbpb.Build.Source.RepoSource {
 							RepoName: "reponame",
 							BranchName: "BranchName",
 							TagName: "TagName",
