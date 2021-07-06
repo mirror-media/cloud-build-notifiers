@@ -18,11 +18,11 @@ func TestWriteMessage(t *testing.T) {
         Tags:      []string{"built-tag"},
 		LogUrl:    "https://some.example.com/log/url?foo=bar",
         BuildTriggerId: "triger-Id",
-		Source:		Source{
-					RepoSource: RepoSource {
-						RepoName: "reponame",
-						BranchName: "BranchName",
-						TagName: "TagName",
+		Source:		&cbpb.Build.Source{
+						RepoSource: i&cbpb.Build.Source.RepoSource {
+							RepoName: "reponame",
+							BranchName: "BranchName",
+							TagName: "TagName",
 					}},
 	}
 
