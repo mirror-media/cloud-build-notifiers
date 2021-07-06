@@ -18,6 +18,12 @@ func TestWriteMessage(t *testing.T) {
         Tags:      []string{"built-tag"},
 		LogUrl:    "https://some.example.com/log/url?foo=bar",
         BuildTriggerId: "triger-Id",
+		Source:		Source{
+					RepoSource: RepoSource {
+						RepoName: "reponame",
+						BranchName: "BranchName",
+						TagName: "TagName",
+					}},
 	}
 
 	got, err := n.writeMessage(b)
