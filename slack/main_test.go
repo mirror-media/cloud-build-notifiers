@@ -23,7 +23,8 @@ func TestWriteMessage(t *testing.T) {
 							RepoName: "reponame",
 							BranchName: "BranchName",
 							TagName: "TagName",
-					}},
+						}, 
+					},
 	}
 
 	got, err := n.writeMessage(b)
