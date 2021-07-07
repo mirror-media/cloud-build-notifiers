@@ -17,7 +17,6 @@ func TestWriteMessage(t *testing.T) {
         Images:    []string{"built-image"},
         Tags:      []string{"built-tag"},
 		LogUrl:    "https://some.example.com/log/url?foo=bar",
-		Source:		cbpb.Build.Source{},
         BuildTriggerId: "triger-Id",
 	}
 
